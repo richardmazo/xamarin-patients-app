@@ -14,7 +14,7 @@ namespace Patients
         {
             InitializeComponent();
 
-            MainPage = new PatientsPage();
+            MainPage = new NavigationPage(new PatientsPage());
         }
 
         protected override void OnStart()

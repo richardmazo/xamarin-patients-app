@@ -39,7 +39,7 @@
 
         public override string ToString()
         {
-            return this.TreatmentDescription;
+            return this.FirstName;
         }  
     }
 }

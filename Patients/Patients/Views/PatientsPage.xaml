@@ -3,13 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Patients.Views.PatientsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Lista de pacientes">
+             Title="Patients">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Patients}">
-            <Label Text="Hola!"></Label>
+            BindingContext="{Binding Patients}"
+            Padding="5">
             <ListView
+                HasUnevenRows="True"
                 ItemsSource="{Binding Patients}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="0"
+                                    Text="{Binding TreatmentDescription}">
+                                </Label>
+                                <Label
+                                    Grid.Column="1"
+                                    HorizontalOptions="End"
+                                    Text="{Binding Phone, StringFormat='{0:C2}'}">
+                                </Label>                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>
