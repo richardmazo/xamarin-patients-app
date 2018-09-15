@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using Patients.Models;
     using Services;
     using Xamarin.Forms;
@@ -38,7 +39,17 @@
         private async void LoadPatients()
         {
             this.IsRefreshing = true;
-            var response = await this.apiService.GetList<Patient>("https://pratice1-2018-iiapi.azurewebsites.net", "/api", "/Patients");
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
+                return;
+            }
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiService.GetList<Patient>(url, "/api", "/Patients");
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -53,7 +64,10 @@
 
         public ICommand RefreshCommand
         {
-            get;
+            get
+            {
+                return new RelayCommand(LoadPatients);
+            }
         }
     }
 }

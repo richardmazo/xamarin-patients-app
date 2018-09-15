@@ -7,36 +7,35 @@
     //using Helpers;
     using Newtonsoft.Json;
     using Patients.Models;
-
-    //using Plugin.Connectivity;
+    using Plugin.Connectivity;
 
     public class ApiService
     {
-        /*      public async Task<Response> CheckConnection()
+        public async Task<Response> CheckConnection()
+        {
+               if (!CrossConnectivity.Current.IsConnected)
                {
-                   if (!CrossConnectivity.Current.IsConnected)
-                   {
-                       return new Response
-                       {
-                           IsSuccess = false,
-                           Message = Languages.TurnOnInternet,
-                       };
-                   }
-                   var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
-                   if (!isReachable)
-                   {
-                       return new Response
-                       {
-                           IsSuccess = false,
-                           Message = Languages.NoInternet,
-                       };
-                   }
-                   return new Response
-                   {
-                       IsSuccess = true,
-                   };
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Please turn on your internet settings.",//Languages.TurnOnInternet,
+                    };
                }
-       */
+
+                var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+                if (!isReachable)
+                {
+                       return new Response
+                       {
+                           IsSuccess = false,
+                           Message = "No internet connection",//Languages.NoInternet,
+                       };
+                }
+                return new Response
+                {
+                       IsSuccess = true,
+                };
+        }
 
         public async Task<Response> GetList<T>(string urlBase, string prefix, string controller)
         {
