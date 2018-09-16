@@ -4,10 +4,11 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    //using Helpers;
     using Newtonsoft.Json;
+    using Patients.Helpers;
     using Patients.Models;
     using Plugin.Connectivity;
+    using Xamarin.Forms;
 
     public class ApiService
     {
@@ -18,17 +19,18 @@
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = "Please turn on your internet settings.",//Languages.TurnOnInternet,
+                        Message = Languages.TurnOnInternet,
                     };
                }
 
-                var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            //var url = Application.Current.Resources["UrlGoogle"].ToString();
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
                 if (!isReachable)
                 {
                        return new Response
                        {
                            IsSuccess = false,
-                           Message = "No internet connection",//Languages.NoInternet,
+                           Message = Languages.NoInternet,
                        };
                 }
                 return new Response
