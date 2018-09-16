@@ -216,4 +216,10 @@
   <data name="Confirm" xml:space="preserve">
     <value>Confirmer</value>
   </data>
+  <data name="EditPatient" xml:space="preserve">
+    <value>Modifier le patient</value>
+  </data>
+  <data name="HasAllergies" xml:space="preserve">
+    <value>A des allergies</value>
+  </data>
 </root>

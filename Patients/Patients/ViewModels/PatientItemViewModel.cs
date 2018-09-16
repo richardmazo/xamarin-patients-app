@@ -1,12 +1,14 @@
 ﻿namespace Patients.ViewModels
 {
+    using System;
     using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Patients.Helpers;
     using Patients.Models;
     using Services;
-    using Xamarin.Forms;
+    using Views;
+    using Xamarin.Forms;    
 
     public class PatientItemViewModel : Patient
     {
@@ -23,6 +25,20 @@
         #endregion
 
         #region Commands
+        public ICommand EditPatientCommand
+        {
+            get
+            {
+                return new RelayCommand(EditPatient);
+            }
+        }
+
+        private async void EditPatient()
+        {
+            MainViewModel.GetInstance().EditPatient = new EditPatientViewModel(this);
+            await Application.Current.MainPage.Navigation.PushAsync(new EditPatientPage());
+        }
+
         public ICommand DeletePatientCommand
         {
             get
@@ -63,14 +79,13 @@
             }
 
             var patientsViewModel = PatientsViewModel.GetInstance();
-
-            var deletedPatient = patientsViewModel.Patients.Where(p => p.PatientId == this.PatientId).FirstOrDefault();
+            var deletedPatient = patientsViewModel.MyPatients.Where(p => p.PatientId == this.PatientId).FirstOrDefault();
             if (deletedPatient != null)
             {
-                patientsViewModel.Patients.Remove(deletedPatient);
+                patientsViewModel.MyPatients.Remove(deletedPatient);
             }
 
-
+            patientsViewModel.RefreshList();
         }
         #endregion
     }

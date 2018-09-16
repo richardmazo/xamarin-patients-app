@@ -177,5 +177,15 @@
         {
             get { return Resource.Confirm; }
         }
+
+        public static string HasAllergies
+        {
+            get { return Resource.HasAllergies; }
+        }
+
+        public static string EditPatient
+        {
+            get { return Resource.EditPatient; }
+        }
     }
 }

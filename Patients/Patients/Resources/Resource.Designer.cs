@@ -160,6 +160,15 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Patient.
+        /// </summary>
+        public static string EditPatient {
+            get {
+                return ResourceManager.GetString("EditPatient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -201,6 +210,15 @@ namespace Patients.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Has Allergies.
+        /// </summary>
+        public static string HasAllergies {
+            get {
+                return ResourceManager.GetString("HasAllergies", resourceCulture);
             }
         }
         

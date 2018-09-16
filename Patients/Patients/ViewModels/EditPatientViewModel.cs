@@ -4,14 +4,14 @@
     using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
-    using Helpers;
+    using Patients.Helpers;
     using Patients.Models;
     using Patients.Services;
     using Plugin.Media;
     using Plugin.Media.Abstractions;
     using Xamarin.Forms;
 
-    public class AddPatientViewModel : BaseViewModel
+    public class EditPatientViewModel : BaseViewModel
     {
         #region Attributes
 
@@ -25,19 +25,25 @@
 
         private ImageSource imageSource;
 
+        private Patient patient;
+        #endregion
+
+        #region Constructor
+        public EditPatientViewModel(Patient patient)
+        {
+            this.patient = patient;
+            this.apiService = new ApiService();
+            this.IsEnabled = true;
+            this.ImageSource = patient.ImageFullPath;
+        }
         #endregion
 
         #region Properties
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string Address { get; set; }
-
-        public string Phone { get; set; }
-
-        public string TreatmentDescription { get; set; }  
+        public Patient Patient
+        {
+            get { return this.patient; }
+            set { this.SetValue(ref this.patient, value); }
+        }
 
         public bool IsRunning
         {
@@ -56,20 +62,72 @@
             get { return this.imageSource; }
             set { this.SetValue(ref this.imageSource, value); }
         }
-
-
-        #endregion
-
-        #region Constructors
-        public AddPatientViewModel()
-        {
-            this.apiService = new ApiService();
-            this.IsEnabled = true;
-            this.ImageSource = "nopatients";
-        }
         #endregion
 
         #region Commands
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new RelayCommand(DeletePatient);
+            }
+        }
+
+        private async void DeletePatient()
+        {
+            var answer = await Application.Current.MainPage.DisplayAlert(
+                Languages.Confirm,
+                Languages.DeleteConfirmation,
+                Languages.Yes,
+                Languages.No);
+
+            if (!answer)
+            {
+                return;
+            }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlPatientsController"].ToString();
+            var response = await this.apiService.Delete(url, prefix, controller, this.Patient.PatientId);
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+
+            var patientsViewModel = PatientsViewModel.GetInstance();
+            var deletedPatient = patientsViewModel.MyPatients.Where(p => p.PatientId == this.Patient.PatientId).FirstOrDefault();
+            if (deletedPatient != null)
+            {
+                patientsViewModel.MyPatients.Remove(deletedPatient);
+            }
+
+            patientsViewModel.RefreshList();
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            await Application.Current.MainPage.Navigation.PopAsync();
+
+        }
+
         public ICommand SaveCommand
         {
             get
@@ -131,7 +189,7 @@
 
         private async void Save()
         {
-            if (string.IsNullOrEmpty(this.FirstName))
+            if (string.IsNullOrEmpty(this.Patient.FirstName))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -139,7 +197,7 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.LastName))
+            if (string.IsNullOrEmpty(this.Patient.LastName))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -147,7 +205,7 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Address))
+            if (string.IsNullOrEmpty(this.Patient.Address))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -155,7 +213,7 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Phone))
+            if (string.IsNullOrEmpty(this.Patient.Phone))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -172,9 +230,9 @@
                     Languages.Error,
                     Languages.PhoneError,
                     Languages.Accept);
-                return; */
-
-            if (string.IsNullOrEmpty(this.TreatmentDescription))
+                return;
+            }*/
+            if (string.IsNullOrEmpty(this.Patient.TreatmentDescription))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -199,25 +257,14 @@
             if (this.file != null)
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
+                this.Patient.ImageArray = imageArray;
             }
-
-            var patient = new Patient
-            {
-                FirstName = this.FirstName,
-                LastName = this.LastName,
-                Address = this.Address,
-                Phone = this.Phone,
-                PatientSince = DateTime.Now.ToUniversalTime(),
-                TreatmentDescription = this.TreatmentDescription,
-                HasAllergies = true,
-                ImageArray = imageArray,
-            };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlPatientsController"].ToString();
 
-            var response = await this.apiService.Post(url, prefix, controller, patient);
+            var response = await this.apiService.Put(url, prefix, controller, this.Patient, this.Patient.PatientId);
 
             if (!response.IsSuccess)
             {
@@ -229,6 +276,13 @@
 
             var newPatient = (Patient)response.Result;
             var patientsViewModel = PatientsViewModel.GetInstance();
+            var oldPatient = patientsViewModel.MyPatients.Where(p => p.PatientId == this.Patient.PatientId).FirstOrDefault();
+            if (oldPatient != null)
+            {
+                patientsViewModel.MyPatients.Remove(oldPatient);
+
+            }
+
             patientsViewModel.MyPatients.Add(newPatient);
             patientsViewModel.RefreshList();
 
