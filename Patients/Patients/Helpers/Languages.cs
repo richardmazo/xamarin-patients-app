@@ -102,5 +102,30 @@
         {
             get { return Resource.ChangeImage; }
         }
+
+        public static string FirstNameError
+        {
+            get { return Resource.FirstNameError; }
+        }
+
+        public static string LastNameError
+        {
+            get { return Resource.LastNameError; }
+        }
+
+        public static string PhoneError
+        {
+            get { return Resource.PhoneError; }
+        }
+
+        public static string AddressError
+        {
+            get { return Resource.AddressError; }
+        }
+
+        public static string TreatmentDescriptionError
+        {
+            get { return Resource.TreatmentDescriptionError; }
+        }
     }
 }

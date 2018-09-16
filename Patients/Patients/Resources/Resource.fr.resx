@@ -171,4 +171,19 @@
   <data name="ChangeImage" xml:space="preserve">
     <value>Touchez l'image pour la modifier.</value>
   </data>
+  <data name="FirstNameError" xml:space="preserve">
+    <value>Vous devez entrer un nom.</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>Vous devez entrer un nom de famille.</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>Vous devez entrer une adresse.</value>
+  </data>
+  <data name="PhoneError" xml:space="preserve">
+    <value>Vous devez entrer un téléphone.</value>
+  </data>
+  <data name="TreatmentDescriptionError" xml:space="preserve">
+    <value>Vous devez entrer une description de traitement.</value>
+  </data>
 </root>

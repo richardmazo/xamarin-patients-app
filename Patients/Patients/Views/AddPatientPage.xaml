@@ -7,7 +7,7 @@
              Title="{i18n:Translate AddPatient}">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding AddPatientPage}">
+            BindingContext="{Binding AddPatient}">
             <StackLayout
             Padding="5">
                 <Image
@@ -73,7 +73,8 @@
                     <Entry
                         Grid.Column="1"
                         Grid.Row="3"                        
-                        Keyboard="Numeric"
+                        Keyboard="Telephone"
+                        MaxLength="15"
                         Text="{Binding Phone}"
                         Placeholder="{i18n:Translate PhonePlaceholder}">
                     </Entry>
@@ -97,6 +98,7 @@
                 <Button
                     BackgroundColor="Navy"
                     BorderRadius="23"
+                    Command="{Binding SaveCommand}"
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
                     Text="{i18n:Translate Save}"

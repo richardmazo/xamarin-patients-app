@@ -88,6 +88,15 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a address..
+        /// </summary>
+        public static string AddressError {
+            get {
+                return ResourceManager.GetString("AddressError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your address.
         /// </summary>
         public static string AddressPlaceholder {
@@ -124,6 +133,15 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a name..
+        /// </summary>
+        public static string FirstNameError {
+            get {
+                return ResourceManager.GetString("FirstNameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your name.
         /// </summary>
         public static string FirstNamePlaceholder {
@@ -138,6 +156,15 @@ namespace Patients.Resources {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a last name..
+        /// </summary>
+        public static string LastNameError {
+            get {
+                return ResourceManager.GetString("LastNameError", resourceCulture);
             }
         }
         
@@ -178,6 +205,15 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a phone..
+        /// </summary>
+        public static string PhoneError {
+            get {
+                return ResourceManager.GetString("PhoneError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your phone.
         /// </summary>
         public static string PhonePlaceholder {
@@ -201,6 +237,15 @@ namespace Patients.Resources {
         public static string TreatmentDescription {
             get {
                 return ResourceManager.GetString("TreatmentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a treatment description..
+        /// </summary>
+        public static string TreatmentDescriptionError {
+            get {
+                return ResourceManager.GetString("TreatmentDescriptionError", resourceCulture);
             }
         }
         
