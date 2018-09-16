@@ -148,7 +148,7 @@
             }
         }
 
-        public async Task<Response> Put<T>(string urlBase, string prefix, string controller, T model, int id)
+        public async Task<Response> Put<T>(string urlBase, string prefix, string controller, int id, T model)
         {
             try
             {

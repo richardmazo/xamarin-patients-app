@@ -264,7 +264,9 @@
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlPatientsController"].ToString();
 
-            var response = await this.apiService.Put(url, prefix, controller, this.Patient, this.Patient.PatientId);
+            this.Patient.PatientSince = DateTime.Now.ToUniversalTime();
+
+            var response = await this.apiService.Put(url, prefix, controller, this.Patient.PatientId, this.Patient);
 
             if (!response.IsSuccess)
             {
