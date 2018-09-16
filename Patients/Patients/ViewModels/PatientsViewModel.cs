@@ -12,10 +12,13 @@
     public class PatientsViewModel : BaseViewModel
     {
 
+        #region Attributes
         private ApiService apiService;
 
         private bool isRefreshing;
+        #endregion
 
+        #region Properties
         private ObservableCollection<Patient> patients;
 
         public ObservableCollection<Patient> Patients
@@ -24,18 +27,40 @@
             set { this.SetValue(ref this.patients, value); }
         }
 
-        public PatientsViewModel()
-        {
-            this.apiService = new ApiService();
-            this.LoadPatients();
-        }
-
         public bool IsRefreshing
         {
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
 
+        #endregion
+
+        #region Constructors
+        public PatientsViewModel()
+        {
+            instance = this;
+            this.apiService = new ApiService();
+            this.LoadPatients();
+        }
+        #endregion
+
+        #region Singleton
+        public static PatientsViewModel instance { get; set; }
+
+        public static PatientsViewModel GetInstance()
+        {
+            if (instance==null)
+            {
+                return new PatientsViewModel();
+            }
+
+            return instance;
+        }
+        #endregion
+
+
+
+        #region Private Methods
         private async void LoadPatients()
         {
             this.IsRefreshing = true;
@@ -63,13 +88,16 @@
             this.Patients = new ObservableCollection<Patient>(list);
             this.IsRefreshing = false;
         }
+        #endregion
 
+        #region Commands
         public ICommand RefreshCommand
         {
             get
             {
                 return new RelayCommand(LoadPatients);
             }
-        }
+        } 
+        #endregion
     }
 }

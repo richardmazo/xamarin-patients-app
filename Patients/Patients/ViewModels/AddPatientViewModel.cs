@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Patients.ViewModels
 {
+    using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
@@ -129,13 +130,13 @@ namespace Patients.ViewModels
                 return;
             }
 
-            this.isRunning = true;
+            this.IsRunning = true;
             this.IsEnabled = false;
 
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                this.isRunning = false;
+                this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
@@ -160,13 +161,17 @@ namespace Patients.ViewModels
 
             if (!response.IsSuccess)
             {
-                this.isRunning = false;
+                this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
-            this.isRunning = false;
+            var newPatient = (Patient)response.Result;
+            var viewModel = PatientsViewModel.GetInstance();
+            viewModel.Patients.Add(newPatient);
+
+            this.IsRunning = false;
             this.IsEnabled = true;
 
             await Application.Current.MainPage.Navigation.PopAsync();
