@@ -10,43 +10,95 @@
             BindingContext="{Binding AddPatientPage}">
             <StackLayout
             Padding="5">
+                <Image
+                    Source="nopatients">
+                </Image>
                 <Label
-                    Text="{i18n:Translate FirstName}">
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate ChangeImage}">
                 </Label>
-                <Entry
-                     Placeholder="{i18n:Translate FirstNamePlaceholder}">
-                </Entry>
-                <Label
-                    Text="{i18n:Translate LastName}">
-                </Label>
-                <Entry
-                    Placeholder="{i18n:Translate LastNamePlaceholder}">
-                </Entry>
-                <Label
-                    Text="{i18n:Translate Address}">
-                </Label>
-                <Entry
-                     Placeholder="{i18n:Translate AddressPlaceholder}">
-                </Entry>
-                <Label
-                    Text="{i18n:Translate Phone}">
-                </Label>
-                <Entry
-                    Keyboard="Numeric"
-                    Placeholder="{i18n:Translate PhonePlaceholder}">
-                </Entry>
-                <Label
-                    Text="{i18n:Translate TreatmentDescription}">
-                </Label>
-                <Editor
-                     VerticalOptions="FillAndExpand">
-                </Editor>
-                <ActivityIndicator>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width ="*"/>
+                        <ColumnDefinition Width ="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:Translate FirstName}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding FirstName}"
+                        Placeholder="{i18n:Translate FirstNamePlaceholder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="{i18n:Translate LastName}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding LastName}"
+                        Placeholder="{i18n:Translate LastNamePlaceholder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"                        
+                        Text="{i18n:Translate Address}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Address}"
+                        Placeholder="{i18n:Translate AddressPlaceholder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"                        
+                        Text="{i18n:Translate Phone}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"                        
+                        Keyboard="Numeric"
+                        Text="{Binding Phone}"
+                        Placeholder="{i18n:Translate PhonePlaceholder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"                        
+                        Text="{i18n:Translate TreatmentDescription}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Text="{Binding TreatmentDescription}"
+                        VerticalOptions="FillAndExpand">
+                    </Editor>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
                 <Button
                     BackgroundColor="Navy"
                     BorderRadius="23"
                     HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
                     Text="{i18n:Translate Save}"
                     TextColor="White">
                 </Button>
