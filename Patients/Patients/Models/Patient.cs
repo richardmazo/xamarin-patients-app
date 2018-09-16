@@ -30,7 +30,7 @@
             {
                 if (string.IsNullOrEmpty(this.ImagePath))
                 {
-                    return "noimage";
+                    return "nopatients";
                 }
 
                 return $"https://pratice1-2018-iiapi.azurewebsites.net/{this.ImagePath.Substring(1)}";
