@@ -37,5 +37,65 @@
         {
             get { return Resource.TurnOnInternet; }
         }
+
+        public static string AddPatient
+        {
+            get { return Resource.AddPatient; }
+        }
+
+        public static string FirstName
+        {
+            get { return Resource.FirstName; }
+        }
+
+        public static string FirstNamePlaceholder
+        {
+            get { return Resource.FirstNamePlaceholder; }
+        }
+
+        public static string LastName
+        {
+            get { return Resource.LastName; }
+        }
+
+        public static string LastNamePlaceholder
+        {
+            get { return Resource.LastNamePlaceholder; }
+        }
+
+        public static string Address
+        {
+            get { return Resource.Address; }
+        }
+
+        public static string AddressPlaceholder
+        {
+            get { return Resource.AddressPlaceholder; }
+        }
+
+        public static string Phone
+        {
+            get { return Resource.Phone; }
+        }
+
+        public static string PhonePlaceholder
+        {
+            get { return Resource.PhonePlaceholder; }
+        }
+
+        public static string TreatmentDescription
+        {
+            get { return Resource.TreatmentDescription; }
+        }
+
+        public static string TreatmentDescriptionPlaceholder
+        {
+            get { return Resource.TreatmentDescriptionPlaceholder; }
+        }
+
+        public static string Save
+        {
+            get { return Resource.Save; }
+        }
     }
 }

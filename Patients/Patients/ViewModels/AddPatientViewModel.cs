@@ -1,6 +1,6 @@
 ﻿namespace Patients.ViewModels
 {
-    class AddPatientViewModel : BaseViewModel
+    public class AddPatientViewModel : BaseViewModel
     {
     }
 }

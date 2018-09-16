@@ -9,6 +9,8 @@
     {
         public PatientsViewModel Patients { get; set; }
 
+        public AddPatientViewModel AddPatient { get; set; }
+
         public MainViewModel()
         {
             this.Patients = new PatientsViewModel();
@@ -24,6 +26,7 @@
 
         private async void GoToAddPatient()
         {
+            this.AddPatient = new AddPatientViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new AddPatientPage());
         }
     }

@@ -1,10 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Patients.Views.AddPatientPage">
+             xmlns:i18n="clr-namespace:Patients.Helpers"
+             x:Class="Patients.Views.AddPatientPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate AddPatient}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Add Patient"></Label>
-        </StackLayout>
+        <ScrollView
+            BindingContext="{Binding AddPatientPage}">
+            <StackLayout
+            Padding="5">
+                <Label
+                    Text="{i18n:Translate FirstName}">
+                </Label>
+                <Entry
+                     Placeholder="{i18n:Translate FirstNamePlaceholder}">
+                </Entry>
+                <Label
+                    Text="{i18n:Translate LastName}">
+                </Label>
+                <Entry
+                    Placeholder="{i18n:Translate LastNamePlaceholder}">
+                </Entry>
+                <Label
+                    Text="{i18n:Translate Address}">
+                </Label>
+                <Entry
+                     Placeholder="{i18n:Translate AddressPlaceholder}">
+                </Entry>
+                <Label
+                    Text="{i18n:Translate Phone}">
+                </Label>
+                <Entry
+                    Keyboard="Numeric"
+                    Placeholder="{i18n:Translate PhonePlaceholder}">
+                </Entry>
+                <Label
+                    Text="{i18n:Translate TreatmentDescription}">
+                </Label>
+                <Editor
+                     VerticalOptions="FillAndExpand">
+                </Editor>
+                <ActivityIndicator>
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    HeightRequest="46"
+                    Text="{i18n:Translate Save}"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

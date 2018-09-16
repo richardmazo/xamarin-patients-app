@@ -132,4 +132,40 @@
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>
   </data>
+  <data name="AddPatient" xml:space="preserve">
+    <value>Ajouter le patient</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="TreatmentDescription" xml:space="preserve">
+    <value>Description du traitement !</value>
+  </data>
+  <data name="FirstNamePlaceholder" xml:space="preserve">
+    <value>Merci d’indiquer votre nom !</value>
+  </data>
+  <data name="LastNamePlaceholder" xml:space="preserve">
+    <value>Veuillez saisir votre nom</value>
+  </data>
+  <data name="AddressPlaceholder" xml:space="preserve">
+    <value>Merci d'entrer votre adresse</value>
+  </data>
+  <data name="PhonePlaceholder" xml:space="preserve">
+    <value>Svp, entrez votre téléphone!</value>
+  </data>
+  <data name="TreatmentDescriptionPlaceholder" xml:space="preserve">
+    <value>Veuillez entrer la description</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>sauvegarder</value>
+  </data>
 </root>

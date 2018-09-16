@@ -70,11 +70,74 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Patient.
+        /// </summary>
+        public static string AddPatient {
+            get {
+                return ResourceManager.GetString("AddPatient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your address.
+        /// </summary>
+        public static string AddressPlaceholder {
+            get {
+                return ResourceManager.GetString("AddressPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your name.
+        /// </summary>
+        public static string FirstNamePlaceholder {
+            get {
+                return ResourceManager.GetString("FirstNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your last name.
+        /// </summary>
+        public static string LastNamePlaceholder {
+            get {
+                return ResourceManager.GetString("LastNamePlaceholder", resourceCulture);
             }
         }
         
@@ -93,6 +156,51 @@ namespace Patients.Resources {
         public static string Patients {
             get {
                 return ResourceManager.GetString("Patients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your phone.
+        /// </summary>
+        public static string PhonePlaceholder {
+            get {
+                return ResourceManager.GetString("PhonePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Treatment Description.
+        /// </summary>
+        public static string TreatmentDescription {
+            get {
+                return ResourceManager.GetString("TreatmentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the treatment description.
+        /// </summary>
+        public static string TreatmentDescriptionPlaceholder {
+            get {
+                return ResourceManager.GetString("TreatmentDescriptionPlaceholder", resourceCulture);
             }
         }
         
