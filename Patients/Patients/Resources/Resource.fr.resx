@@ -186,4 +186,31 @@
   <data name="TreatmentDescriptionError" xml:space="preserve">
     <value>Vous devez entrer une description de traitement.</value>
   </data>
+  <data name="ImageSource" xml:space="preserve">
+    <value>Où prenez-vous la photo?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>De la galerie</value>
+  </data>
+  <data name="NewPicture" xml:space="preserve">
+    <value>Prenez une nouvelle photo</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>modifier</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Êtes-vous sûr de supprimer ceci?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
 </root>

@@ -186,4 +186,31 @@
   <data name="TreatmentDescriptionError" xml:space="preserve">
     <value>Sie müssen eine Behandlungsbeschreibung eingeben.</value>
   </data>
+  <data name="ImageSource" xml:space="preserve">
+    <value>Wo machst du das Bild?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>Aus der Galerie</value>
+  </data>
+  <data name="NewPicture" xml:space="preserve">
+    <value>Mach ein neues Bild</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Stornieren</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Bist du sicher, dass du das löschst?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
 </root>

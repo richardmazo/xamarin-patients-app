@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patients.ViewModels
+﻿namespace Patients.ViewModels
 {
+    using System;
     using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
     using Patients.Models;
     using Patients.Services;
+    using Plugin.Media;
+    using Plugin.Media.Abstractions;
     using Xamarin.Forms;
 
     public class AddPatientViewModel : BaseViewModel
     {
         #region Attributes
 
+        private MediaFile file;
+
         private ApiService apiService;
 
         private bool isRunning;
 
         private bool isEnabled;
+
+        private ImageSource imageSource;
 
         #endregion
 
@@ -48,6 +51,13 @@ namespace Patients.ViewModels
             set { this.SetValue(ref this.isEnabled, value); }
         }
 
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { this.SetValue(ref this.imageSource, value); }
+        }
+
+
         #endregion
 
         #region Constructors
@@ -55,6 +65,7 @@ namespace Patients.ViewModels
         {
             this.apiService = new ApiService();
             this.IsEnabled = true;
+            this.ImageSource = "nopatients";
         }
         #endregion
 
@@ -64,6 +75,57 @@ namespace Patients.ViewModels
             get
             {
                 return new RelayCommand(Save);
+            }
+        }
+
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangeImage);
+            }
+        }
+
+        private async void ChangeImage()
+        {
+            await CrossMedia.Current.Initialize();
+
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+                Languages.ImageSource,
+                Languages.Cancel,
+                null,
+                Languages.FromGallery,
+                Languages.NewPicture);
+
+            if (source == Languages.Cancel)
+            {
+                this.file = null;
+                return;
+            }
+
+            if (source == Languages.NewPicture)
+            {
+                this.file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                this.file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (this.file != null)
+            {
+                this.ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = this.file.GetStream();
+                    return stream;
+                });
             }
         }
 
@@ -142,6 +204,12 @@ namespace Patients.ViewModels
                 return;
             }
 
+            byte[] imageArray = null;
+            if (this.file != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.file.GetStream());
+            }
+
             var patient = new Patient
             {
                 FirstName = this.FirstName,
@@ -149,8 +217,9 @@ namespace Patients.ViewModels
                 Address = this.Address,
                 Phone = this.Phone,
                 PatientSince = DateTime.Now.ToUniversalTime(),
-                HasAllergies = true,
                 TreatmentDescription = this.TreatmentDescription,
+                HasAllergies = true,
+                ImageArray = imageArray,
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
