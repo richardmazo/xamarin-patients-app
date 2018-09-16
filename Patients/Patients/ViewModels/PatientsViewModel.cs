@@ -1,5 +1,6 @@
 ﻿namespace Patients.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -23,6 +24,8 @@
         #endregion
 
         #region Properties
+
+        public List<Patient> MyPatients { get; set; }
 
         public ObservableCollection<PatientItemViewModel> Patients
         {
@@ -85,8 +88,14 @@
                 return;
             }
 
-            var myList = (List<Patient>)response.Result;
-            var myListPatientItemViewModel = myList.Select(p => new PatientItemViewModel
+            this.MyPatients = (List<Patient>)response.Result;
+            this.RefreshList();
+            this.IsRefreshing = false;
+        }
+
+        public void RefreshList()
+        {
+            var myListPatientItemViewModel = MyPatients.Select(p => new PatientItemViewModel
             {
                 PatientId = p.PatientId,
                 FirstName = p.FirstName,
@@ -99,8 +108,8 @@
                 ImageArray = p.ImageArray,
             });
 
-            this.Patients = new ObservableCollection<PatientItemViewModel>(myListPatientItemViewModel);
-            this.IsRefreshing = false;
+            this.Patients = new ObservableCollection<PatientItemViewModel>(
+                myListPatientItemViewModel.OrderBy(p => p.FirstName));
         }
         #endregion
 

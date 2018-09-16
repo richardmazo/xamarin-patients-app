@@ -237,20 +237,9 @@
             }
 
             var newPatient = (Patient)response.Result;
-            var viewModel = PatientsViewModel.GetInstance();
-            viewModel.Patients.Add(new PatientItemViewModel
-            {
-                PatientId = newPatient.PatientId,
-                FirstName = newPatient.FirstName,
-                LastName = newPatient.LastName,
-                Address = newPatient.Address,
-                Phone = newPatient.Phone,
-                TreatmentDescription = newPatient.TreatmentDescription,
-                ImagePath = newPatient.ImagePath,
-                HasAllergies = newPatient.HasAllergies,
-                ImageArray = newPatient.ImageArray,
-            });
-            
+            var patientsViewModel = PatientsViewModel.GetInstance();
+            patientsViewModel.MyPatients.Add(newPatient);
+            patientsViewModel.RefreshList();
 
             this.IsRunning = false;
             this.IsEnabled = true;
