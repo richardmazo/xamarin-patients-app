@@ -213,4 +213,7 @@
   <data name="No" xml:space="preserve">
     <value>Non</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
 </root>

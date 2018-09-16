@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
@@ -13,15 +14,17 @@
     {
 
         #region Attributes
+
+        private ObservableCollection<PatientItemViewModel> patients;
+
         private ApiService apiService;
 
         private bool isRefreshing;
         #endregion
 
         #region Properties
-        private ObservableCollection<Patient> patients;
 
-        public ObservableCollection<Patient> Patients
+        public ObservableCollection<PatientItemViewModel> Patients
         {
             get { return this.patients; }
             set { this.SetValue(ref this.patients, value); }
@@ -58,8 +61,6 @@
         }
         #endregion
 
-
-
         #region Private Methods
         private async void LoadPatients()
         {
@@ -84,8 +85,21 @@
                 return;
             }
 
-            var list = (List<Patient>)response.Result;
-            this.Patients = new ObservableCollection<Patient>(list);
+            var myList = (List<Patient>)response.Result;
+            var myListPatientItemViewModel = myList.Select(p => new PatientItemViewModel
+            {
+                PatientId = p.PatientId,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Address = p.Address,
+                Phone = p.Phone,
+                TreatmentDescription = p.TreatmentDescription,
+                ImagePath = p.ImagePath,
+                HasAllergies = p.HasAllergies,
+                ImageArray = p.ImageArray,
+            });
+
+            this.Patients = new ObservableCollection<PatientItemViewModel>(myListPatientItemViewModel);
             this.IsRefreshing = false;
         }
         #endregion
