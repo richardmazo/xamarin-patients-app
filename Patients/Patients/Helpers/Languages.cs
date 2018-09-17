@@ -6,13 +6,16 @@
 
     public static class Languages
     {
+        #region Constructor
         static Languages()
         {
             var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
             Resource.Culture = ci;
             DependencyService.Get<ILocalize>().SetLocale(ci);
         }
+        #endregion
 
+        #region Methods
         public static string Accept
         {
             get { return Resource.Accept; }
@@ -191,6 +194,7 @@
         public static string PatientSince
         {
             get { return Resource.PatientSince; }
-        }
+        } 
+        #endregion
     }
 }
