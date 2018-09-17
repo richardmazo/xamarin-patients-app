@@ -187,5 +187,10 @@
         {
             get { return Resource.EditPatient; }
         }
+
+        public static string PatientSince
+        {
+            get { return Resource.PatientSince; }
+        }
     }
 }

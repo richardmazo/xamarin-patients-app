@@ -222,4 +222,7 @@
   <data name="HasAllergies" xml:space="preserve">
     <value>Has Allergies</value>
   </data>
+  <data name="PatientSince" xml:space="preserve">
+    <value>Patient since</value>
+  </data>
 </root>

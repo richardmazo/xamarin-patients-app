@@ -295,6 +295,15 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patient since.
+        /// </summary>
+        public static string PatientSince {
+            get {
+                return ResourceManager.GetString("PatientSince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone.
         /// </summary>
         public static string Phone {

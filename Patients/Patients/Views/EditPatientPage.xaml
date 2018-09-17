@@ -108,6 +108,16 @@
                         IsToggled="{Binding Patient.HasAllergies}">
                     </Switch>
                 </Grid>
+                <Label                   
+                        Text="{i18n:Translate PatientSince}"
+                        VerticalOptions="CenterAndExpand">
+                </Label>
+                <DatePicker 
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Date="{Binding Patient.PatientSince}"
+                        HorizontalOptions="CenterAndExpand">
+                </DatePicker>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">

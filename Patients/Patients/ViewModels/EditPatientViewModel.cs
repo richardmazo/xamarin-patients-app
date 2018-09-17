@@ -23,6 +23,8 @@
 
         private bool isEnabled;
 
+        private DateTime patientSince;
+
         private ImageSource imageSource;
 
         private Patient patient;
@@ -35,6 +37,7 @@
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.ImageSource = patient.ImageFullPath;
+            this.PatientSince = patient.PatientSince;
         }
         #endregion
 
@@ -43,6 +46,12 @@
         {
             get { return this.patient; }
             set { this.SetValue(ref this.patient, value); }
+        }
+
+        public DateTime PatientSince
+        {
+            get { return this.patientSince; }
+            set { this.SetValue(ref this.patientSince, value); }
         }
 
         public bool IsRunning
@@ -264,7 +273,7 @@
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlPatientsController"].ToString();
 
-            this.Patient.PatientSince = DateTime.Now.ToUniversalTime();
+            //this.Patient.PatientSince = DateTime.Now.ToUniversalTime();
 
             var response = await this.apiService.Put(url, prefix, controller, this.Patient.PatientId, this.Patient);
 

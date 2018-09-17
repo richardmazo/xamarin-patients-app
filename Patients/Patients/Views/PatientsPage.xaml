@@ -45,10 +45,10 @@
                                     VerticalOptions="Center">
                                     <Label
                                         FontAttributes="Bold"
-                                        Text="{Binding TreatmentDescription}">
+                                        Text="{Binding FirstName}">
                                     </Label>
                                     <Label
-                                        Text="{Binding Address}">
+                                        Text="{Binding TreatmentDescription}">
                                     </Label>
                                 </StackLayout>
                                 <Label

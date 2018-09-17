@@ -37,6 +37,10 @@
 
         public string Phone { get; set; }
 
+        public bool HasAllergies { get; set; }
+
+        public DateTime PatientSince { get; set; }
+
         public string TreatmentDescription { get; set; }  
 
         public bool IsRunning
@@ -207,9 +211,10 @@
                 LastName = this.LastName,
                 Address = this.Address,
                 Phone = this.Phone,
-                PatientSince = DateTime.Now.ToUniversalTime(),
+                PatientSince = PatientSince.ToUniversalTime(),
+                //PatientSince = DateTime.Now.ToUniversalTime(),
                 TreatmentDescription = this.TreatmentDescription,
-                HasAllergies = true,
+                HasAllergies = this.HasAllergies,
                 ImageArray = imageArray,
             };
 

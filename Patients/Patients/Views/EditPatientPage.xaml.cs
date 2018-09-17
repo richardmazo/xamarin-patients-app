@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Patients.Views
+﻿namespace Patients.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditPatientPage : ContentPage
 	{
 		public EditPatientPage ()

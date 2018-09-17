@@ -92,10 +92,32 @@
                     <Editor
                         Grid.Column="1"
                         Grid.Row="4"
-                        Text="{Binding TreatmentDescription}"
-                        VerticalOptions="FillAndExpand">
+                        VerticalOptions="FillAndExpand"
+                        Text="{Binding TreatmentDescription}">
                     </Editor>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"                        
+                        Text="{i18n:Translate HasAllergies}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        Grid.Column="1"
+                        Grid.Row="5"   
+                        HorizontalOptions="End"
+                        IsToggled="{Binding HasAllergies}">
+                    </Switch>
                 </Grid>
+                <Label                   
+                        Text="{i18n:Translate PatientSince}"
+                        VerticalOptions="CenterAndExpand">
+                </Label>
+                <DatePicker 
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Date="{Binding PatientSince}"
+                        HorizontalOptions="CenterAndExpand">
+                </DatePicker>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
