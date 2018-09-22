@@ -24,14 +24,14 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width ="*"/>
-                        <ColumnDefinition Width ="Auto"/>
+                        <ColumnDefinition Width ="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Label
                         Grid.Column="0"
@@ -115,7 +115,7 @@
                 <DatePicker 
                         Grid.Column="1"
                         Grid.Row="6"
-                        Date="{Binding Patient.PatientSince}"
+                        Date="{Binding Patient.PatientSince, Mode=TwoWay}"
                         HorizontalOptions="CenterAndExpand">
                 </DatePicker>
                 <ActivityIndicator

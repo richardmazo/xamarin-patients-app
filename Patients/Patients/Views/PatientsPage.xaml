@@ -43,13 +43,35 @@
                                 <StackLayout
                                      Grid.Column="1"
                                     VerticalOptions="Center">
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding FirstName}">
+                                        </Label>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding LastName}">
+                                        </Label>
+                                    </StackLayout>
                                     <Label
-                                        FontAttributes="Bold"
-                                        Text="{Binding FirstName}">
+                                        Text="{Binding Address}">
+                                    </Label>
+                                    <Label
+                                        Text="{Binding PatientSince}">
                                     </Label>
                                     <Label
                                         Text="{Binding TreatmentDescription}">
                                     </Label>
+                                    <StackLayout
+                                        Orientation="Horizontal">
+                                        <Label
+                                            Text="{i18n:Translate HasAllergies}">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding HasAllergies}">
+                                        </Label>
+                                    </StackLayout>
                                 </StackLayout>
                                 <Label
                                     Grid.Column="2"

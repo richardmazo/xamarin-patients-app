@@ -98,13 +98,13 @@
             var myListPatientItemViewModel = MyPatients.Select(p => new PatientItemViewModel
             {
                 PatientId = p.PatientId,
-                FirstName = p.FirstName,
+                FirstName = p.FirstName,  //$"{p.FirstName}{p.LastName}",
                 LastName = p.LastName,
                 Address = p.Address,
                 Phone = p.Phone,
                 TreatmentDescription = p.TreatmentDescription,
                 ImagePath = p.ImagePath,
-                HasAllergies = p.HasAllergies,
+                HasAllergies = p.HasAllergies,               
                 ImageArray = p.ImageArray,
             });
 

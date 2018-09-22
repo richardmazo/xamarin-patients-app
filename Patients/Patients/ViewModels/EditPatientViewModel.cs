@@ -37,7 +37,7 @@
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.ImageSource = patient.ImageFullPath;
-            this.PatientSince = patient.PatientSince;
+           // this.PatientSince = patient.PatientSince;
         }
         #endregion
 
