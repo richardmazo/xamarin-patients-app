@@ -250,6 +250,16 @@
                 return;
             }
 
+
+            if (string.Equals("{01/01/0001 00:00:00}", this.PatientSince.ToString()))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.DateError,
+                    Languages.Accept);
+                return;
+            }
+
             this.IsRunning = true;
             this.IsEnabled = false;
 

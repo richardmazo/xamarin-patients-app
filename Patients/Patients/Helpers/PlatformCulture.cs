@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patients.Helpers
+﻿namespace Patients.Helpers
 {
     using System;
 

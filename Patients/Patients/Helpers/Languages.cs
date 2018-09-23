@@ -1,8 +1,8 @@
 ﻿namespace Patients.Helpers
 {
-    using Xamarin.Forms;
     using Interfaces;
     using Resources;
+    using Xamarin.Forms;
 
     public static class Languages
     {
@@ -194,7 +194,12 @@
         public static string PatientSince
         {
             get { return Resource.PatientSince; }
-        } 
+        }
+
+        public static string DateError
+        {
+            get { return Resource.DateError; }
+        }
         #endregion
     }
 }

@@ -133,6 +133,15 @@ namespace Patients.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a date other than the one that is selected by default.
+        /// </summary>
+        public static string DateError {
+            get {
+                return ResourceManager.GetString("DateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {

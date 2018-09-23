@@ -168,16 +168,6 @@
                 return;
             }
 
-            /*var phone = decimal.Parse(this.Phone);
-
-            if (phone < 0)
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.PhoneError,
-                    Languages.Accept);
-                return; */
-
             if (string.IsNullOrEmpty(this.TreatmentDescription))
             {
                 await Application.Current.MainPage.DisplayAlert(

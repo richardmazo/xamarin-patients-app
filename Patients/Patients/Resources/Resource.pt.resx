@@ -225,4 +225,7 @@
   <data name="PatientSince" xml:space="preserve">
     <value>Paciente desde</value>
   </data>
+  <data name="DateError" xml:space="preserve">
+    <value>Você deve inserir uma data diferente da que é selecionada por padrão</value>
+  </data>
 </root>
