@@ -70,6 +70,7 @@
             this.apiService = new ApiService();
             this.IsEnabled = true;
             this.ImageSource = "nopatients";
+            this.PatientSince = DateTime.Now;
         }
         #endregion
 

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
@@ -95,12 +96,14 @@
 
         public void RefreshList()
         {
+
             var myListPatientItemViewModel = MyPatients.Select(p => new PatientItemViewModel
             {
                 PatientId = p.PatientId,
-                FirstName = p.FirstName,  //$"{p.FirstName}{p.LastName}",
+                FirstName = p.FirstName,
                 LastName = p.LastName,
                 Address = p.Address,
+                PatientSince = p.PatientSince,
                 Phone = p.Phone,
                 TreatmentDescription = p.TreatmentDescription,
                 ImagePath = p.ImagePath,

@@ -58,7 +58,7 @@
                                         Text="{Binding Address}">
                                     </Label>
                                     <Label
-                                        Text="{Binding PatientSince}">
+                                        Text="{Binding PatientSince,StringFormat='{0:MMMM dd, yyyy}'}">
                                     </Label>
                                     <Label
                                         Text="{Binding TreatmentDescription}">
